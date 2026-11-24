@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dnavrjwx0txox"]
+
+[ext_resource type="Script" uid="uid://r3n5qd81fu44" path="res://scripts/levels/base_level.gd" id="1_level"]
+
+[sub_resource type="BoxMesh" id="FloorMesh"]
+size = Vector3(100, 0.2, 100)
+
+[sub_resource type="BoxShape3D" id="FloorCollision"]
+size = Vector3(100, 0.2, 100)
+
+[sub_resource type="Environment" id="WorldEnvironment"]
+background_mode = 1
+background_color = Color(0.18, 0.22, 0.3, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.65, 0.72, 0.85, 1)
+ambient_light_energy = 0.45
+
+[node name="BaseLevel" type="Node3D" unique_id=1813801126]
+script = ExtResource("1_level")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1609918334]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1516126492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("FloorMesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1923916394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("FloorCollision")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1925183338]
+environment = SubResource("WorldEnvironment")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1001794804]
+transform = Transform3D(0.86602527, 0.3535535, -0.35355362, 0, 0.7071069, 0.70710665, 0.50000024, -0.6123722, 0.61237246, 0, 0, 0)
+light_color = Color(1, 0.92, 0.78, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1570842820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
